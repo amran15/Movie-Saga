@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Paper from '@material-ui/core/Paper';
 
 
 class MovieItem extends Component {
   
     render(){
         return(
+            <Paper>
            <div>
             <p>{this.props.movie.description}</p>
           
@@ -14,6 +16,7 @@ class MovieItem extends Component {
         src={this.props.movie.poster}
         alt={this.props.movie.title}/>
         </div>
+        </Paper>
           );
     }
 }
