@@ -8,7 +8,7 @@ import MovieItem from '../MovieItem/MovieItem';
 class MoviesList extends Component {
     componentDidMount(){
         this.props.dispatch({ type: "GET_MOVIES" });
-    }
+    } //dispatches an action
     
     render(){
         return(
