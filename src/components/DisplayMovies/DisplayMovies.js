@@ -15,7 +15,8 @@ class MoviesList extends Component {
         return(
             <div>
             {this.props.reduxState.movies.map(movie => 
-            <MovieItem movie={movie} history={this.props.history}
+            <MovieItem movie={movie}
+            history={this.props.history}
             key={movie.id}/>
             )}
         </div>
@@ -24,7 +25,7 @@ class MoviesList extends Component {
 }
 
 const mapReduxToState = (reduxState) => ({
-    reduxState: reduxState,
+   reduxState,
 });
 
 export default connect(mapReduxToState)(MoviesList);

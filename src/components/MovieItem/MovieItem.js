@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom';
 
 //brought in Grid to display my movie poster/title and description in a nice format
 
 
 
 class MovieItem extends Component {
-handleClick = ()=>{
-    this.props.dispatch({type: 'GET_DETAILS', payload: this.props.movie});
-}
+    handleClick = () => {
+        this.props.dispatch({ type: 'GET_DETAILS', payload: this.props.movie });
+        this.props.history.push('/Details');
+    }
 
     render() {
         return (
             <Grid container justify="center">
                 <Grid item xs={5}>
-                    <Link to="/Details">
-                        <img
-                            src={this.props.movie.poster}
-                            onClick={this.handleClick}
-                            alt={this.props.movie.title} />
-                    </Link>
+                    <img
+                        src={this.props.movie.poster}
+                        onClick={this.handleClick}
+                        alt={this.props.movie.title} />
                 </Grid>
                 <Grid item xs={5}>
                     <h2> {this.props.movie.title}</h2>

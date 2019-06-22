@@ -6,10 +6,10 @@ class Edit extends Component {
         title: '',
         description: ''
     }
-handleClick = () =>{
-    console.log(this.state)
-    this.props.dispatch({ type: 'EDIT_GENRES', payload: this.state});
-}
+    handleClick = () => {
+        console.log(this.state)
+        this.props.dispatch({ type: 'EDIT_GENRES', payload: this.state });
+    }
     handleChange = (PropertyName) => (event) => {
         console.log(this.state.title)
         this.setState({
