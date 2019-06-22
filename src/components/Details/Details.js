@@ -14,6 +14,12 @@ class Details extends Component {
             <div>
                 <button onClick={this.handleBackClick}>Back to List</button>
                 <button onClick={this.handleEditClick}>Edit</button>
+                <br/>
+                <img src={this.props.reduxState.movies.poster}
+                    alt={this.props.reduxState.movies.title}
+                    value={this.props.reduxState.movies.id} />
+                    <h3>{this.props.reduxState.movies.title}</h3>
+                    <p>{this.props.reduxState.movies.description}</p>
             </div>
         );
     }
@@ -21,6 +27,6 @@ class Details extends Component {
 
 
 const mapReduxStateToProps = (reduxState) => ({
-    feedback: reduxState
+    reduxState
 })
 export default connect(mapReduxStateToProps)(Details);

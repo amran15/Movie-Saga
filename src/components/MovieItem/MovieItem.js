@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 
 
 class MovieItem extends Component {
+handleClick = ()=>{
+    this.props.dispatch({type: 'GET_DETAILS', payload: this.props.movie});
+}
 
     render() {
         return (
@@ -16,6 +19,7 @@ class MovieItem extends Component {
                     <Link to="/Details">
                         <img
                             src={this.props.movie.poster}
+                            onClick={this.handleClick}
                             alt={this.props.movie.title} />
                     </Link>
                 </Grid>
@@ -27,5 +31,8 @@ class MovieItem extends Component {
         );
     }
 }
+const mapReduxToState = (reduxState) => ({
+    reduxState: reduxState,
+});
 
-export default connect()(MovieItem);
+export default connect(mapReduxToState)(MovieItem);
