@@ -4,6 +4,7 @@ import MovieItem from '../MovieItem/MovieItem';
 
 
 //component to display Movies
+//mapping my poster, description and title using MovieItem
 
 class MoviesList extends Component {
     componentDidMount(){
