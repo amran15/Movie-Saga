@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 
 
 class Details extends Component {
-    componentDidMount(){
-        this.props.dispatch({ type: "GET_GENRES" });
-    } //dispatches an action
-
+    handleBackClick = () => {
+        this.props.history.push('/');
+    }
     render() {
         return (
-            // <div>{this.props.reduxState.genres}</div>
-            <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+            <div>
+                <button onClick={this.handleBackClick}>Back to List</button>
+                <button onClick={this.handleEditClick}>Edit</button>
+            </div>
         );
     }
 }
