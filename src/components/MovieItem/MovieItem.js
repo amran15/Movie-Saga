@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 
+//brought in Grid to display my movie poster/title and description in a nice format
+
 
 
 class MovieItem extends Component {
