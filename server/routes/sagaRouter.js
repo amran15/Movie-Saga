@@ -29,7 +29,22 @@ router.get('/genres', (req, res) => {
     });
 });
 
-router.get('/details/:id', (req, res) => {
+//put request
+// router.put('/genre', (req, res) => {
+//   console.log('route hit', req.body)
+//   const queryGenres = "SELECT * FROM genres";
+//   pool.query(queryGenres)
+//     .then(results => {
+//       console.log(results.rows);
+//       res.send(results.rows);
+//     })
+//     .catch(error => {
+//       console.log("Error completing SELECT genres query", error);
+//       res.sendStatus(500);
+//     });
+// });
+
+router.get('/details', (req, res) => {
   pool.query(`SELECT "name" FROM "genres"
  JOIN "movies_genres" ON "genres"."id"="movies_genres"."genres_id"
  JOIN "movies" ON "movies"."id"="movies_genres"."movies_id"

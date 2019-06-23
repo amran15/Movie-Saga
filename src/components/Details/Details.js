@@ -17,11 +17,12 @@ class Details extends Component {
                 <button onClick={this.handleClick}>Back to List</button>
                 <button onClick={this.handleEditClick}>Edit</button>
                 <br/>
-                <img src={this.props.reduxState.movies.poster}
-                    alt={this.props.reduxState.movies.title}
-                    value={this.props.reduxState.movies.id} />
-                    <h3>{this.props.reduxState.movies.title}</h3>
-                    <p>{this.props.reduxState.movies.description}</p>
+                <img src={this.props.reduxState.movie.poster}
+                    alt={this.props.reduxState.movie.title}
+                    value={this.props.reduxState.movie.id} />
+                    <h3>{this.props.reduxState.movie.title}</h3>
+                    <p>{this.props.reduxState.movie.description}</p>
+                    <pre>{JSON.stringify(this.props.reduxState.genres, null, 2)}</pre>
             </div>
         );
     }

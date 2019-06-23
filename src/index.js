@@ -26,7 +26,8 @@ function* getMovies(action) {
 
 function* getDetails(action) {
     try {
-        const getDetails = yield axios.get(`/api/details/?id=${action.payload.id}`);
+        yield put({ type: 'SINGLE_MOVIE', payload: action.payload })
+        const getDetails = yield axios.get(`/api/details?id=${action.payload.id}`);
         console.log('details:', getDetails);
         yield put({ type: 'GET_GENRES', payload: getDetails.data })
     } catch (error) {
@@ -34,18 +35,16 @@ function* getDetails(action) {
     }
 }
 
-function* updateMovie(action) {
-    console.log(action.payload);
-    
-    try {
-        yield axios.put(`/api`, action.payload);
-        yield put ({type:'SET_MOVIES'});
-        yield put ({type:`FETCH_MOVIES`});
-    } catch (error) {
-        console.log('Error updating movie', error);
+// function* updateMovie(action) {
+//     console.log(action.payload);
+//     try {
+//         yield axios.put(`/api`, action.payload);
+//         yield put ({type: 'EDIT_MOVIE'})
+//     } catch (error) {
+//         console.log('Error updating movie', error);
         
-    }
-}
+//     }
+// }
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -61,8 +60,6 @@ const sagaMiddleware = createSagaMiddleware();
 const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
-            return action.payload;
-        case 'GET_DETAILS':
             return action.payload;
         default:
             return state;
