@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//route for getting all movies
 router.get('/', (req, res) => {
   const queryMovies = "SELECT * FROM movies";
   pool
@@ -15,35 +16,7 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     });
 });
-
-router.get('/genres', (req, res) => {
-  const queryGenres = "SELECT * FROM genres";
-  pool.query(queryGenres)
-    .then(results => {
-      console.log(results.rows);
-      res.send(results.rows);
-    })
-    .catch(error => {
-      console.log("Error completing SELECT genres query", error);
-      res.sendStatus(500);
-    });
-});
-
-//put request
-// router.put('/genre', (req, res) => {
-//   console.log('route hit', req.body)
-//   const queryGenres = "SELECT * FROM genres";
-//   pool.query(queryGenres)
-//     .then(results => {
-//       console.log(results.rows);
-//       res.send(results.rows);
-//     })
-//     .catch(error => {
-//       console.log("Error completing SELECT genres query", error);
-//       res.sendStatus(500);
-//     });
-// });
-
+//route for getting selected movies for specific movies
 router.get('/details', (req, res) => {
   pool.query(`SELECT "name" FROM "genres"
  JOIN "movies_genres" ON "genres"."id"="movies_genres"."genres_id"
@@ -57,5 +30,22 @@ router.get('/details', (req, res) => {
       res.sendStatus(500);
     })
 })
+
+put request
+router.put('/edit', (req, res) => {
+  console.log('route hit', req.body)
+  pool.query(`UPDATE "movies"
+  SET "title"=$1, "description"=$2
+  WHERE "id"=$3`, [req.body.title, req.body.description, req.body.id])
+    .then((response) => {
+      console.log(results.rows);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("Error completing UPDATE of movies", error);
+      res.sendStatus(500);
+    });
+});
+
 
 module.exports = router;
