@@ -34,7 +34,7 @@ router.get('/details/:id', (req, res) => {
  JOIN "movies_genres" ON "genres"."id"="movies_genres"."genres_id"
  JOIN "movies" ON "movies"."id"="movies_genres"."movies_id"
  WHERE "movies_genres"."movies_id"=$1
- ORDER BY "genres"."id";`, [req.params.id])
+ ORDER BY "genres"."id";`, [req.query.id])
     .then((result) => {
       res.send(result.rows)
     }).catch((err) => {

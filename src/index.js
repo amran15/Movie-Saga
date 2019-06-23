@@ -12,14 +12,6 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from "redux-saga/effects";
 import axios from 'axios';
 
-// Create the rootSaga generator function
-function* rootSaga() {
-    yield takeEvery('GET_MOVIES', getMovies);
-    yield takeEvery('GET_DETAILS', getDetails);
-}
-
-// yield takeEvery('GET_GENRES', getGenres);
-
 //generator function to get movies
 function* getMovies(action) {
     try {
@@ -30,25 +22,35 @@ function* getMovies(action) {
         console.log('error getting movies', error);
     }
 }
-//generator function to get movies
-// function* getGenres(action) {
-//     try {
-//         const getGenres = yield axios.get('/api/genres');
-//         console.log('genres:', getGenres);
-//         yield put({ type: 'GET_GENRES', payload: getGenres.data })
-//     } catch (error) {
-//         console.log('error getting Genres', error);
-//     }
-// }
+
 
 function* getDetails(action) {
     try {
-        const getDetails = yield axios.get(`/api/details/${action.payload.id}`);
+        const getDetails = yield axios.get(`/api/details/?id=${action.payload.id}`);
         console.log('details:', getDetails);
         yield put({ type: 'GET_GENRES', payload: getDetails.data })
     } catch (error) {
         console.log('error getting details', error);
     }
+}
+
+function* updateMovie(action) {
+    console.log(action.payload);
+    
+    try {
+        yield axios.put(`/api`, action.payload);
+        yield put ({type:'SET_MOVIES'});
+        yield put ({type:`FETCH_MOVIES`});
+    } catch (error) {
+        console.log('Error updating movie', error);
+        
+    }
+}
+
+// Create the rootSaga generator function
+function* rootSaga() {
+    yield takeEvery('GET_MOVIES', getMovies);
+    yield takeEvery('GET_DETAILS', getDetails);
 }
 
 
@@ -64,6 +66,14 @@ const movies = (state = [], action) => {
             return action.payload;
         default:
             return state;
+    }
+}
+const movie = (state = {}, action) =>{
+    switch (action.type){
+        case 'SINGLE_MOVIE':
+        return action.payload;
+        default:
+         return state;
     }
 }
 
@@ -82,6 +92,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movie
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
