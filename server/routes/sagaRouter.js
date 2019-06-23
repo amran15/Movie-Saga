@@ -41,8 +41,6 @@ router.get('/details/:id', (req, res) => {
       console.log('Error completing SELECT details query', err);
       res.sendStatus(500);
     })
-
-
 })
 
 module.exports = router;

@@ -15,13 +15,15 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
-    yield takeEvery('GET_GENRES', getGenres);
     yield takeEvery('GET_DETAILS', getDetails);
 }
+
+// yield takeEvery('GET_GENRES', getGenres);
+
 //generator function to get movies
 function* getMovies(action) {
     try {
-        const getMovies = yield axios.get('/movies');
+        const getMovies = yield axios.get('/api');
         console.log('movies:', getMovies);
         yield put({ type: 'SET_MOVIES', payload: getMovies.data })
     } catch (error) {
@@ -29,21 +31,21 @@ function* getMovies(action) {
     }
 }
 //generator function to get movies
-function* getGenres(action) {
-    try {
-        const getGenres = yield axios.get('/movies/genres');
-        console.log('genres:', getGenres);
-        yield put({ type: 'GET_GENRES', payload: getGenres.data })
-    } catch (error) {
-        console.log('error getting Genres', error);
-    }
-}
+// function* getGenres(action) {
+//     try {
+//         const getGenres = yield axios.get('/api/genres');
+//         console.log('genres:', getGenres);
+//         yield put({ type: 'GET_GENRES', payload: getGenres.data })
+//     } catch (error) {
+//         console.log('error getting Genres', error);
+//     }
+// }
 
 function* getDetails(action) {
     try {
-        const getDetails = yield axios.get('/details/:id');
+        const getDetails = yield axios.get(`/api/details/${action.payload.id}`);
         console.log('details:', getDetails);
-        yield put({ type: 'GET_DETAILS', payload: getDetails.data })
+        yield put({ type: 'GET_GENRES', payload: getDetails.data })
     } catch (error) {
         console.log('error getting details', error);
     }

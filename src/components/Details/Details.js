@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
+
 class Details extends Component {
-    handleBackClick = () => {
+    handleClick = () => {
         this.props.history.push('/');
     }
+
     handleEditClick = () => {
         this.props.history.push('/edit');
     }
     render() {
         return (
             <div>
-                <button onClick={this.handleBackClick}>Back to List</button>
+                <button onClick={this.handleClick}>Back to List</button>
                 <button onClick={this.handleEditClick}>Edit</button>
                 <br/>
                 <img src={this.props.reduxState.movies.poster}

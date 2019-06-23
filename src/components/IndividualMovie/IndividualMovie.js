@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 
+
 //brought in Grid to display my movie poster/title and description in a nice format
 
 
@@ -9,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 class MovieItem extends Component {
     handleClick = () => {
         this.props.dispatch({ type: 'GET_DETAILS', payload: this.props.movie });
-        this.props.history.push('/Details');
+        this.props.history.push('/details');
     }
 
     render() {

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MovieItem from '../MovieItem/MovieItem';
+import {withRouter} from 'react-router-dom';
+import IndividualMovie from '../IndividualMovie/IndividualMovie';
 
 
 //component to display Movies
-//mapping my poster, description and title using MovieItem
+//mapping my poster, description and title using IndividualMovie
 
-class MoviesList extends Component {
+class MovieList extends Component {
     componentDidMount(){
         this.props.dispatch({ type: "GET_MOVIES" });
     } //dispatches an action
@@ -15,17 +16,20 @@ class MoviesList extends Component {
         return(
             <div>
             {this.props.reduxState.movies.map(movie => 
-            <MovieItem movie={movie}
+            <IndividualMovie movie={movie}
             history={this.props.history}
             key={movie.id}/>
             )}
+            {/* <pre>
+            {JSON.stringify(this.props.reduxState, null, 2)}
+            </pre> */}
         </div>
         );
     }
 }
 
 const mapReduxToState = (reduxState) => ({
-   reduxState,
+   reduxState
 });
 
-export default connect(mapReduxToState)(MoviesList);
+export default withRouter (connect(mapReduxToState)(MovieList));
