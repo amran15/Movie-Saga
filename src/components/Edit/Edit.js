@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+
 
 class Edit extends Component {
     state = {
         title: '',
         description: ''
     }
-    handleClick = () => {
-        console.log(this.state)
-        this.props.dispatch({ type: 'EDIT_GENRES', payload: this.state });
+//submit edit function
+submitEdit = (event) => {
+        event.preventDefault();
+        this.props.dispatch({ type: 'EDIT_MOVIE', payload:{ ...this.state, id:this.props.reduxState.movie.id} });
+        this.props.history.push('/');
     }
-
+//cancel edit function
     handleCancelClick() {
-        console.log('HELLLOOOO');
-    }
+        this.props.history.push('/details');
+     }
 
     handleChange = (PropertyName) => (event) => {
-        console.log(this.state.title)
         this.setState({
             [PropertyName]: event.target.value
         })
@@ -29,9 +30,14 @@ class Edit extends Component {
             <div>
                 <input onChange={this.handleChange('title')} value={this.state.title} placeholder='movie title'></input>
                 <br />
-                <textarea onChange={this.handleChange('description')} value={this.state.description}></textarea>
-                <input onClick={this.handleClick} type="submit"></input>
-                <Link to={'/details'}><button onClick={this.handleCancelClick}>Cancel</button></Link>
+                <textarea onChange={this.handleChange('description')} value={this.state.description}
+                rows="10" cols="100" />
+                <br/>
+                <button onClick={this.submitEdit}>Submit</button>
+                <br/>
+               <button onClick={this.handleCancelClick}>Cancel</button>
+            
+                <pre>{JSON.stringify(this.props.reduxState.movie, null, 2)}</pre>
             </div>
         );
     }

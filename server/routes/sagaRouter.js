@@ -4,9 +4,8 @@ const router = express.Router();
 
 //route for getting all movies
 router.get('/', (req, res) => {
-  const queryMovies = "SELECT * FROM movies";
-  pool
-    .query(queryMovies)
+  const queryText = `SELECT * FROM "movies" ORDER BY "id"`;
+  pool.query(queryText)
     .then(results => {
       console.log(results.rows);
       res.send(results.rows);
@@ -31,14 +30,14 @@ router.get('/details', (req, res) => {
     })
 })
 
-put request
+//put request
 router.put('/edit', (req, res) => {
   console.log('route hit', req.body)
   pool.query(`UPDATE "movies"
   SET "title"=$1, "description"=$2
-  WHERE "id"=$3`, [req.body.title, req.body.description, req.body.id])
+  WHERE "id"=$3;`, [req.body.title, req.body.description, req.body.id])
     .then((response) => {
-      console.log(results.rows);
+      console.log(response);
       res.sendStatus(200);
     })
     .catch((error) => {

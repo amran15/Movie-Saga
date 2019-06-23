@@ -35,21 +35,22 @@ function* getDetails(action) {
     }
 }
 
-// function* updateMovie(action) {
-//     console.log(action.payload);
-//     try {
-//         yield axios.put(`/api`, action.payload);
-//         yield put ({type: 'EDIT_MOVIE'})
-//     } catch (error) {
-//         console.log('Error updating movie', error);
+function* editMovie(action) {
+    console.log(action.payload);
+    try {
+        yield axios.put(`/api/edit`, action.payload);
+        yield put ({type: 'GET_MOVIES'})
+    } catch (error) {
+        console.log('Error updating movie', error);
         
-//     }
-// }
+    }
+}
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
     yield takeEvery('GET_DETAILS', getDetails);
+    yield takeEvery('EDIT_MOVIE', editMovie)
 }
 
 
