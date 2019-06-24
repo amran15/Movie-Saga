@@ -34,7 +34,7 @@ submitEdit = (event) => {
                 <textarea onChange={this.handleChange('description')} value={this.state.description}
                 rows="10" cols="100" />
                 <br/>
-                <button onClick={this.submitEdit}>Submit</button>
+                <button onClick={this.submitEdit}>Save</button>
                 <br/>
                <button onClick={this.handleCancelClick}>Cancel</button>
             
