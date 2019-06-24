@@ -1,7 +1,9 @@
 # React-Redux with Sagas
 
 #Project Description 
-The Weekend Saga Movie Project displayed a list of movies. The application would ideally allow user to click on a movie image, when the image is clicked on, it should direct them to a different page(/details). The details page--should displays the description of the movie alongside which genres are associated with the movie. When a user clicks on the edit button, user will be directed to the edit page, where there are two input texts. From the client-side, the input texts  update the original tite/description of the movie. From the back-end and server, when a user submit the changes, the database will update the title and description of the movie.
+The Weekend Saga Movie Project displayed a list of movies. The application would ideally allow user to click on a movie image, when the image is clicked on, it should direct them to a different page('/details'). The details page--should displays the description of the movie alongside the genres  associated with the movie. When a user clicks on the edit button, user will be directed to the edit page, where there are two input texts. From the client-side, the input texts  updates the original tite/description of the movie. From the back-end and server-side when the user submits the changes, the database will update the title and description of the movie(the PUT request that dispatches from the client side to the server side updates the database). The user also has the ability to discard the changes by clicking on the cancel button which redirects them back to the home page--which in this case is home page('/'). 
+
+For this weekend project, we used numerous GET requests and one PUT which updated our database when the user submits changes in the edit page. We used many to many junction table to combined our movies and genres tables. I personally utilized the GRID styling from @Material-UI to style. 
 
 
 
