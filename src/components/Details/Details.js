@@ -22,7 +22,9 @@ class Details extends Component {
                     value={this.props.reduxState.movie.id} />
                     <h3>{this.props.reduxState.movie.title}</h3>
                     <p>{this.props.reduxState.movie.description}</p>
-                    <pre>{JSON.stringify(this.props.reduxState.genres, null, 2)}</pre>
+                    {/* <pre>{JSON.stringify(this.props.reduxState.genres, null, 2)}</pre> */}
+                    <br/>
+                    <ul> {this.props.reduxState.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}</ul>
             </div>
         );
     }

@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 //route for getting selected movies for specific movies
 router.get('/details', (req, res) => {
-  pool.query(`SELECT "name" FROM "genres"
+  pool.query(`SELECT "name", "genres"."id" FROM "genres"
  JOIN "movies_genres" ON "genres"."id"="movies_genres"."genres_id"
  JOIN "movies" ON "movies"."id"="movies_genres"."movies_id"
  WHERE "movies_genres"."movies_id"=$1

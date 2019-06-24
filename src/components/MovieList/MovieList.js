@@ -20,7 +20,7 @@ class MovieList extends Component {
             history={this.props.history}
             key={movie.id}/>
             )}
-            <div> {this.props.reduxState.genres.map(genre => <p>{genre.name}</p>)}</div>
+            {/* <pre>{JSON.stringify(this.props.reduxState.genres, null, 2)}</pre> */}
         </div>
         );
     }

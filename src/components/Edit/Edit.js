@@ -15,7 +15,8 @@ submitEdit = (event) => {
     }
 //cancel edit function
     handleCancelClick() {
-        this.props.history.push('/details');
+        // this.props.history.push('/details');
+        console.log('WHY IS YOU BROKEN?');
      }
 
     handleChange = (PropertyName) => (event) => {
