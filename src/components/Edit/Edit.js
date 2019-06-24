@@ -13,10 +13,10 @@ submitEdit = (event) => {
         this.props.dispatch({ type: 'EDIT_MOVIE', payload:{ ...this.state, id:this.props.reduxState.movie.id} });
         this.props.history.push('/');
     }
-//cancel edit function
-    handleCancelClick() {
-        // this.props.history.push('/details');
-        console.log('WHY IS YOU BROKEN?');
+//cancel edit function  
+    handleCancelClick = () => {
+        this.props.history.push('/details');
+
      }
 
     handleChange = (PropertyName) => (event) => {

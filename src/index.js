@@ -12,6 +12,13 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from "redux-saga/effects";
 import axios from 'axios';
 
+// Create the rootSaga generator function
+function* rootSaga() {
+    yield takeEvery('GET_MOVIES', getMovies);
+    yield takeEvery('GET_DETAILS', getDetails);
+    yield takeEvery('EDIT_MOVIE', editMovie)
+}
+
 //generator function to get movies
 function* getMovies(action) {
     try {
@@ -22,7 +29,6 @@ function* getMovies(action) {
         console.log('error getting movies', error);
     }
 }
-
 
 function* getDetails(action) {
     try {
@@ -44,13 +50,6 @@ function* editMovie(action) {
         console.log('Error updating movie', error);
         
     }
-}
-
-// Create the rootSaga generator function
-function* rootSaga() {
-    yield takeEvery('GET_MOVIES', getMovies);
-    yield takeEvery('GET_DETAILS', getDetails);
-    yield takeEvery('EDIT_MOVIE', editMovie)
 }
 
 

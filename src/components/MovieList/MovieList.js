@@ -4,8 +4,8 @@ import {withRouter} from 'react-router-dom';
 import IndividualMovie from '../IndividualMovie/IndividualMovie';
 
 
-//component to display Movies
-//mapping my poster, description and title using IndividualMovie
+
+//mapped my poster, description and title using IndividualMovie component
 
 class MovieList extends Component {
     componentDidMount(){
@@ -20,7 +20,6 @@ class MovieList extends Component {
             history={this.props.history}
             key={movie.id}/>
             )}
-            {/* <pre>{JSON.stringify(this.props.reduxState.genres, null, 2)}</pre> */}
         </div>
         );
     }
