@@ -1,5 +1,7 @@
 # React-Redux with Sagas
 
+> ** Updating the READ.ME
+
 > **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
 
 For this weekend challenge you'll be building a movie application!  
