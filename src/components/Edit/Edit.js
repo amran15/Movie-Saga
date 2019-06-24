@@ -10,7 +10,7 @@ class Edit extends Component {
 //submit edit function
 submitEdit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'EDIT_MOVIE', payload:{ ...this.state, id:this.props.reduxState.movie.id} });
+        this.props.dispatch({ type: 'EDIT_MOVIE', payload:{ ...this.state, id:this.props.id} });
         this.props.history.push('/');
     }
 //cancel edit function  
@@ -50,7 +50,7 @@ submitEdit = (event) => {
 
 
 const mapReduxStateToProps = (reduxState) => ({
-    reduxState
+    reduxState: reduxState.movie
 })
 
 export default connect(mapReduxStateToProps)(Edit);

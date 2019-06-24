@@ -52,7 +52,6 @@ function* editMovie(action) {
     }
 }
 
-
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 

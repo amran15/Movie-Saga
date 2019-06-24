@@ -15,14 +15,16 @@ class MovieItem extends Component {
 
     render() {
         return (
-            <Grid container justify="center">
+            <Grid container 
+            direction="row"
+            justify="center">
                 <Grid item xs={6}>
                     <img
                         src={this.props.movie.poster}
                         onClick={this.handleClick}
                         alt={this.props.movie.title} />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={3}>
                     <h2> {this.props.movie.title}</h2>
                     <p>{this.props.movie.description}</p>
                 </Grid>

@@ -1,6 +1,9 @@
 # React-Redux with Sagas
 
-> **Updating my READ.ME**
+#Project Description 
+The Weekend Saga Movie Project displayed a list of movies. The application would ideally allow user to click on a movie image, when the image is clicked on, it should direct them to a different page(/details). The details page--should displays the description of the movie alongside which genres are associated with the movie. When a user clicks on the edit button, user will be directed to the edit page, where there are two input texts. From the client-side, the input texts  update the original tite/description of the movie. From the back-end and server, when a user submit the changes, the database will update the title and description of the movie.
+
+
 
 > **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
 
